@@ -1,0 +1,165 @@
+﻿Q.1 Write a Program to write even & odd numbers from 50 to 70 into two separate files.
+For example, 
+Output:
+Even numbers from even_file.txt:
+50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70
+
+
+Odd numbers from odd_file.txt:
+51, 53, 55, 57, 59, 61, 63, 65, 67, 69
+Ans: #include <stdio.h>
+
+
+int main() {
+    FILE *even_file, *odd_file;
+    even_file = fopen("even_file.txt", "w");
+    odd_file = fopen("odd_file.txt", "w");
+
+
+    fprintf(even_file, "Even numbers from even_file.txt:\n");
+    fprintf(odd_file, "Odd numbers from odd_file.txt:\n");
+
+
+    for (int i = 50; i <= 70; i++) {
+        if (i % 2 == 0) {
+            fprintf(even_file, "%d, ", i);
+        } else {
+            fprintf(odd_file, "%d, ", i);
+        }
+    }
+
+
+    fprintf(even_file, "\n");
+    fprintf(odd_file, "\n");
+
+
+    fclose(even_file);
+    fclose(odd_file);
+
+
+    return 0;
+}
+O\p: Even numbers from even_file.txt:
+50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 
+
+
+Odd numbers from odd_file.txt:
+51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 
+
+
+
+
+
+
+Q.2 Write a Program to generate mark sheets for a student. Enter the marks of 5 students in Chemistry, Mathematics, and Physics (each out of 100) using a Structure having attributes: roll no, name, chem_marks, maths_marks, and phy_marks. Display the percentage of each student.
+Ans: #include <stdio.h>
+
+
+struct student {
+    int roll_no;
+    char name[200];
+    int chem_marks;
+    int maths_marks;
+    int phy_marks;
+};
+
+
+int main() {
+    struct student students[5];
+    for (int i = 1; i <= 5; i++) {
+        printf("Enter details of Student %d:\n", i );
+        printf("Roll no => ");
+        scanf("%d", &students[i].roll_no);
+        printf("Name => ");
+        scanf("%s", students[i].name);
+        printf("Chemistry => ");
+        scanf("%d", &students[i].chem_marks);
+        printf("Mathematics => ");
+        scanf("%d", &students[i].maths_marks);
+        printf("Physics => ");
+        scanf("%d", &students[i].phy_marks);
+    }
+    printf("student marksheet record:\n");
+    for (int i = 1; i <= 5; i++) {
+        int total = students[i].chem_marks + students[i].maths_marks + students[i].phy_marks;
+        float percentage = (float)total / 300 * 100;
+
+
+        printf("%s (%d)\n", students[i].name, students[i].roll_no);
+        printf("Chemistry => %d\n", students[i].chem_marks);
+        printf("Mathematics => %d\n", students[i].maths_marks);
+        printf("Physics => %d\n", students[i].phy_marks);
+        printf("Total => %d/300\n", total);
+        printf("Percent => %.2f%%\n", percentage);
+    }
+
+
+    return 0;
+}
+O\p: /tmp/I9GPkRoP3x.o
+Enter details of Student 1:
+Roll no => 121
+Name => rajpatel
+Chemistry => 95
+Mathematics => 90
+Physics => 88
+Enter details of Student 2:
+Roll no => 122
+Name => divyasharma
+Chemistry => 92
+Mathematics => 80
+Physics => 84
+Enter details of Student 3:
+Roll no => 123
+Name => piyushmishra
+Chemistry => 72
+Mathematics => 87
+Physics => 93
+Enter details of Student 4:
+Roll no => 124
+Name => vatsalmangukiya
+Chemistry => 68
+Mathematics => 96
+Physics => 85
+Enter details of Student 5:
+Roll no => 125
+Name => sagartrivedi
+Chemistry => 91
+Mathematics => 89
+Physics => 77
+student marksheet record:
+rajpatel (121)
+Chemistry => 95
+Mathematics => 90
+Physics => 88
+Total => 273/300
+Percent => 91.00%
+divyasharma (122)
+Chemistry => 92
+Mathematics => 80
+Physics => 84
+Total => 256/300
+Percent => 85.33%
+piyushmishra (123)
+Chemistry => 72
+Mathematics => 87
+Physics => 93
+Total => 252/300
+Percent => 84.00%
+vatsalmangukiya (124)
+Chemistry => 68
+Mathematics => 96
+Physics => 85
+Total => 249/300
+Percent => 83.00%
+sagartrivedi(125)
+Chemistry => 91
+Mathematics => 89
+Physics => 77
+Total => 257/300
+Percent => 85.67%
+
+
+
+
+=== Code Execution Successful ===
